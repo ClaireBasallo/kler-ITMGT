@@ -41,13 +41,7 @@ def shift_letter(letter, shift):
     if letter == " ":
         shift_letter = " "
     else:
-        shift_letter = None
-        for number in range(26):
-            if alphabet[number]==letter:
-                if shift+number>=26:
-                    shift_letter = alphabet[(shift+number)-26]
-                else:
-                    shift_letter = alphabet[shift+number]
+        shift_letter = alphabet[(alphabet.index(letter)+shift)%26]
     return shift_letter
 
 def caesar_cipher(message, shift):
@@ -75,13 +69,10 @@ def caesar_cipher(message, shift):
     for letter in message:
         if letter == " ":
             caesar_cipher = caesar_cipher + " "
+            continue
         else:
-            for number in range(26):
-                if alphabet[number]==letter.upper():
-                    if shift+number>=26:
-                        caesar_cipher = caesar_cipher + alphabet[(shift+number)-26]
-                    else:
-                        caesar_cipher = caesar_cipher + alphabet[shift+number]
+            shift_letter = alphabet[(alphabet.index(letter.upper())+shift)%26]
+            caesar_cipher+=shift_letter
     return caesar_cipher
 
 def shift_by_letter(letter, letter_shift):
