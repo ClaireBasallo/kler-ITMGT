@@ -65,15 +65,12 @@ def caesar_cipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     alphabet = ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    caesar_cipher = ""
-    for letter in message:
-        if letter == " ":
-            caesar_cipher = caesar_cipher + " "
-            continue
-        else:
-            shift_letter = alphabet[(alphabet.index(letter.upper())+shift)%26]
-            caesar_cipher+=shift_letter
+
+    caesar_cipher = ''.join([alphabet[(alphabet.index(letter)+shift)%26] if letter != " " else " " for letter in message])
     return caesar_cipher
+
+x = caesar_cipher("ATTACK AT DAWN",3)
+print(x)
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
